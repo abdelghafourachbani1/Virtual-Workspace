@@ -44,18 +44,18 @@
             <h2 class="text-2xl text-center font-bold mb-4">ajoute un employe</h2>
 
             <div class="grid grid-cols-2 gap-4 mb-4">
-                <input type="text" placeholder="full name" class="border p-2 rounded-lg w-full">
-                <input type="email" placeholder="email" class="border p-2 rounded-lg w-full">
+                <input id="full-name" type="text" placeholder="full name" class="border p-2 rounded-lg w-full">
+                <input id="email" type="email" placeholder="email" class="border p-2 rounded-lg w-full">
             </div>
 
             <div class="grid grid-cols-2 gap-4 mb-4">
-                <input type="text" id="photourlinput" placeholder="URL de l'image" class="border p-2 rounded-lg w-full">
+                <input id="photourlinput" type="text" placeholder="URL de l'image" class="border p-2 rounded-lg w-full">
 
                 <img id="photopreview" src="" alt="image preview" class="w-24 h-24  object-cover rounded-full border-dotted border-2 ">
             </div>
 
             <div class="grid grid-cols-2 gap-4 mb-4">
-                    <select class="border p-2 rounded-lg w-full">
+                    <select id="rolesurentreprise" class="border p-2 rounded-lg w-full">
                         <option value="selectionner un role">selectionner un role</option>
                         <option value="receptionniste">receptionniste</option>
                         <option value="technicien IT">technicien IT</option>
@@ -65,18 +65,18 @@
                         <option value="autre">autre</option>
                     </select>
 
-                <input type="number" placeholder="numero de telephone" class=" border p-2 rounded-lg">
+                <input id="phonenumber" type="number" placeholder="numero de telephone" maxlength="10" minlength="10" class=" border p-2 rounded-lg">
             </div>
 
             <h3 class="text-lg font-bold mt-4 text-center">experiences profetionnel</h3>
 
             <div id="experiencepart" class="space-y-4 mt-2">
 
-                <div class="experienceinputs grid grid-cols-2 gap-4 border p-4 rounded-lg">
+                <div  class="experienceinputs grid grid-cols-2 gap-4 border p-4 rounded-lg">
 
-                    <input type="text" class="border p-2 rounded-lg w-full" placeholder="Nom de l'entreprise">
+                    <input  type="text" class="entreprisename border p-2 rounded-lg w-full" placeholder="Nom de l'entreprise">
 
-                    <select class="border p-2 rounded-lg w-full">
+                    <select class="exprole border p-2 rounded-lg w-full">
                         <option value="selectionner un role">selectionner un role</option>
                         <option value="receptionniste">receptionniste</option>
                         <option value="technicien IT">technicien IT</option>
@@ -86,8 +86,8 @@
                         <option value="autre">autre</option>
                     </select>
 
-                    <input type="date" class="border p-2 rounded-lg w-full">
-                    <input type="date" class="border p-2 rounded-lg w-full">
+                    <input type="date" class="datefrom border p-2 rounded-lg w-full">
+                    <input type="date" class="dateto border p-2 rounded-lg w-full">
 
                 </div>
 
@@ -98,12 +98,8 @@
             </button>
 
             <div class="flex gap-4 mt-6">
-                <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 w-full">
-                    Submit
-                </button>
-                <button id="closeformbtn" class="px-4 py-2 bg-gray-400 text-black rounded-lg hover:bg-gray-500 w-full">
-                    Annuler
-                </button>
+                <button id="submitbtn" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 w-full">Submit</button>
+                <button id="closeformbtn" class="px-4 py-2 bg-gray-400 text-black rounded-lg hover:bg-gray-500 w-full">Annuler</button>
             </div>
 
         </div>
