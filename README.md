@@ -1,11 +1,11 @@
-#Gestion du Personnel - WorkSphere
-Description
+**Gestion du Personnel - WorkSphere**
+##Description##
 
 Ce projet est une application web interactive de gestion du personnel.
 Elle permet d’ajouter, déplacer et supprimer des employés sur un plan d’étage en temps réel, tout en respectant les règles liées aux rôles et aux zones autorisées.
 L’interface est moderne, intuitive et responsive, développée avec HTML, CSS et JavaScript.
 
-Objectifs
+##Objectifs##
 
 Ajouter, déplacer et supprimer des employés directement depuis l’interface.
 
@@ -15,7 +15,7 @@ Offrir une expérience utilisateur fluide et responsive sur ordinateur, tablette
 
 Centraliser la gestion des données du personnel et leur visualisation spatiale.
 
-Fonctionnalités principales
+##Fonctionnalités principales##
 
 Liste des employés non assignés (“Unassigned Staff”).
 
@@ -45,13 +45,13 @@ JavaScript (gestion dynamique et logique métier)
 
 Git pour versionnement et gestion du projet
 
-Déploiement
+##Déploiement##
 
 Le projet est hébergé et accessible en ligne via GitHub Pages ou Vercel.
 Lien du site : [ajouter ici]
 Lien du repository GitHub : [ajouter ici]
 
-Instructions pour l’utilisateur
+##Instructions pour l’utilisateur##
 
 Ouvrir le site depuis le navigateur.
 
@@ -60,3 +60,7 @@ Ajouter un employé via le bouton “Add New Worker”.
 Affecter un employé aux zones disponibles en respectant les règles métier.
 
 Visualiser ou supprimer un employé depuis son profil ou la liste.
+
+
+Abdelghafour Achbani
+##youcode-2025##
