@@ -513,3 +513,62 @@ function unassignEmployee(empId) {
     affichageemployees();
     renderAllZones();
 }
+
+
+
+// ========== show details modal (simple) ==========
+let detailModal = null;
+function showdetails(empId) {
+    const emp = employes.find(e => e.id === empId);
+    if (!emp) return;
+
+    // remove previous
+    if (detailModal) detailModal.remove();
+
+    detailModal = document.createElement("div");
+    detailModal.className = "fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50";
+    detailModal.innerHTML = `
+            <div class="bg-white w-full max-w-lg p-4 rounded-xl shadow-xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-start gap-4">
+                <div class="flex gap-4 items-center">
+                <img src="${emp.photourl}" class="w-28 h-28 rounded-full object-cover border" alt="${emp.name}">
+                <div>
+                    <h2 class="text-xl font-bold">${emp.name}</h2>
+                    <p class="text-sm text-gray-600">${emp.role}</p>
+                    <p class="text-sm">${emp.email}</p>
+                    <p class="text-sm">${emp.numerotelephone}</p>
+                    <p class="text-sm text-gray-500">Localisation: ${emp.zone ? room_config[emp.zone].title : "Non assigné"}</p>
+                </div>
+                </div>
+                <div class="flex flex-col gap-2">
+                <button id="close-detail-modal" class="px-3 py-1 bg-gray-200 rounded">Fermer</button>
+                ${emp.assigned ? `<button id="remove-from-zone" class="px-3 py-1 bg-red-600 text-white rounded">Retirer</button>` : ''}
+                </div>
+            </div>
+            <hr class="my-3" />
+            <div>
+                <h3 class="font-bold">Expériences</h3>
+                <div id="exp-list" class="space-y-2 mt-2"></div>
+            </div>
+            </div>
+        `;
+    document.body.appendChild(detailModal);
+
+    const expList = detailModal.querySelector("#exp-list");
+    if (!emp.exprecinces || emp.exprecinces.length === 0) {
+        expList.innerHTML = "<p class='text-sm text-gray-500'>Aucune expérience </p>";
+    } else {
+        emp.exprecinces.forEach(ex => {
+            const el = document.createElement("div");
+            el.className = "border p-2 rounded";
+            el.innerHTML = `<div class="font-semibold">${ex.entreprisename || "—"}</div>
+        <div class="text-sm text-gray-600">${ex.role || "—"}</div>
+        <div class="text-xs text-gray-500">${ex.datefrom || "—"} → ${ex.dateto || "—"}</div>`;
+            expList.appendChild(el);
+        });
+    }
+
+    detailModal.querySelector("#close-detail-modal").addEventListener("click", () => { detailModal.remove(); detailModal = null; });
+    const removeBtn = detailModal.querySelector("#remove-from-zone");
+    if (removeBtn) removeBtn.addEventListener("click", () => { unassignEmployee(emp.id); if (detailModal) { detailModal.remove(); detailModal = null; } });
+}
