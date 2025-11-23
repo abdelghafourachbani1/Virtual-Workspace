@@ -69,6 +69,137 @@
     </main>
 
     <div id="form-holder"
+        class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-start overflow-y-auto p-4 z-40">
+        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-8 py-8 rounded-t-2xl">
+                <h2 class="text-3xl font-bold text-white text-center">Ajouter une Employe</h2>
+                <p class="text-emerald-100 text-center mt-2 text-sm">Remplissez les informations ci-dessous</p>
+            </div>
+    
+            <div class="p-8">
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-emerald-600 rounded-full"></span>
+                        Informations Personnelles
+                    </h3>
+    
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Nom Complet</label>
+                            <input id="full-name" type="text" placeholder="Jean Dupont"
+                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                            <input id="email" type="email" placeholder="jean@example.com"
+                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition" />
+                        </div>
+                    </div>
+    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Numéro de Téléphone</label>
+                            <input id="phonenumber" type="text" placeholder="+33 6 12 34 56 78"
+                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Rôle</label>
+                            <select id="rolesurentreprise"
+                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition bg-white">
+                                <option value="">Sélectionner un rôle</option>
+                                <option value="receptionniste">Réceptionniste</option>
+                                <option value="technicien IT">Technicien IT</option>
+                                <option value="agent de securite">Agent de Sécurité</option>
+                                <option value="manager">Manager</option>
+                                <option value="nettoyage">Nettoyage</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-emerald-600 rounded-full"></span>
+                        Photo de Profil
+                    </h3>
+    
+                    <div class="flex gap-6 items-end">
+                        <div class="flex-1">
+                            <label class="block text-sm font-medium text-slate-700 mb-2">URL de l'Image</label>
+                            <input id="photourlinput" type="text" placeholder="https://exemple.com/photo.jpg"
+                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition" />
+                        </div>
+                        <div class="text-center">
+                            <img id="photopreview" src="/placeholder.svg" alt="Aperçu de la photo"
+                                class="w-24 h-24 object-cover rounded-full border-2 border-emerald-200 shadow-md" />
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-emerald-600 rounded-full"></span>
+                        Expérience Professionnelle
+                    </h3>
+    
+                    <div id="experiencepart" class="space-y-3 mb-4">
+                        <div
+                            class="experienceinputs grid grid-cols-2 gap-3 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1.5">Nom de l'Entreprise</label>
+                                <input type="text"
+                                    class="entreprisename w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition"
+                                    placeholder="Nom de l'entreprise" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1.5">Rôle</label>
+                                <select
+                                    class="exprole w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition bg-white">
+                                    <option value="">Sélectionner un rôle</option>
+                                    <option value="receptionniste">Réceptionniste</option>
+                                    <option value="technicien IT">Technicien IT</option>
+                                    <option value="agent de securite">Agent de Sécurité</option>
+                                    <option value="manager">Manager</option>
+                                    <option value="nettoyage">Nettoyage</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1.5">Date de Début</label>
+                                <input type="date"
+                                    class="datefrom w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1.5">Date de Fin</label>
+                                <input type="date"
+                                    class="dateto w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition" />
+                            </div>
+                        </div>
+                    </div>
+    
+                    <button id="addexperiencebtn" type="button"
+                        class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium rounded-lg transition flex items-center gap-2">
+                        <span class="text-lg">+</span>
+                        Ajouter une Expérience
+                    </button>
+                </div>
+    
+                <!-- Action Buttons -->
+                <div class="flex gap-3 pt-6 border-t border-slate-200">
+                    <button id="submitbtn"
+                        class="flex-1 px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition shadow-md hover:shadow-lg">
+                        Soumettre
+                    </button>
+                    <button id="closeformbtn"
+                        class="flex-1 px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-lg transition">
+                        Annuler
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div id="form-holder"
         class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-start overflow-y-auto p-4 z-40">
         <div class="bg-white w-full max-w-3xl p-6 rounded-xl shadow-xl max-h-[90vh] overflow-y-auto">
             <h2 class="text-2xl text-center font-bold mb-4">ajoute un employe</h2>
@@ -130,7 +261,7 @@
                     class="px-4 py-2 bg-gray-400 text-black rounded-lg hover:bg-gray-500 w-full">Annuler</button>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div id="zone-modal"
         class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center p-4 z-40">

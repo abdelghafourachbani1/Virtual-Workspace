@@ -112,7 +112,7 @@ function validateEmail(email) {
     return /^[a-zA-Z0-9._-]+@gmail\.com$/.test(email);
 }
 function validatePhotoUrl(url) {
-    return url === /^https?:\/\/.+\.(jpg|png|jpeg)$/i.test(url);
+    return /^https?:\/\/.+\.(jpg|png|jpeg)$/i.test(url);
 }
 function validatePhone(phone) {
     return /^[0-9]{10}$/.test(phone);
@@ -188,7 +188,7 @@ submitbtn.addEventListener("click", function (e) {
     }
 
     // experiences parsing + validation of dates
-    let experienceobject = [];
+      let experienceobject = [];
     let experiences = document.querySelectorAll(".experienceinputs");
 
     experiences.forEach(function (exp) {
@@ -213,12 +213,11 @@ submitbtn.addEventListener("click", function (e) {
     }
 
     let employe = {
-        id: Date.now(),
         name: fullname,
         email: emailinput,
         numerotelephone: telephoneinput,
         role: rolesurentreprise || "autre",
-        photourl: photourl || "https://via.placeholder.com/150",
+        photourl: photourl ,
         exprecinces: experienceobject,
         zone: null,
         assigned: false,
