@@ -397,3 +397,50 @@ serveursbtn.addEventListener("click", function () {
     let serverarray = employes.filter(e => servveremp.includes(e.role) && !e.assigned);
     zoneemplyemodal("Salle des Serveurs", serverarray);
 });
+
+
+
+////////////////////// assign to zone (with role check + capacity check) ////////////////
+function assigntozone(empId) {
+    let employe = employes.find(e => e.id === empId);
+    if (!employe) return;
+
+    if (!curreentzone) {
+        alert("Zone non sélectionnée !");
+        return;
+    }
+
+    // role check using room_config
+    const cfg = room_config[curreentzone];
+    if (!cfg) {
+        alert("Configuration de la zone introuvable.");
+        return;
+    }
+
+    // role allowed?
+    const roleAllowed = (function () {
+        if (employe.role === "manager") return true;
+        if (employe.role === "nettoyage" && curreentzone === "archivebtn") return false;
+        if (!cfg.allowed) return true;
+        return cfg.allowed.includes(employe.role);
+    })();
+
+    if (!roleAllowed) {
+        alert(`Le rôle "${employe.role}" n'est pas autorisé ici`);
+        return;
+    }
+
+    // capacity check
+    const occupantsCount = employes.filter(e => e.assigned && e.zone === curreentzone).length;
+    if (occupantsCount >= cfg.capacity) {
+        alert(`Capacité atteinte pour ${cfg.title} (${cfg.capacity})`);
+        return;
+    }
+
+    employe.zone = curreentzone;
+    employe.assigned = true;
+
+    zonemodal.classList.add("hidden");
+    affichageemployees();
+    renderAllZones();
+}
