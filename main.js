@@ -504,3 +504,12 @@ function renderZone(zoneKey) {
     });
 }
 
+// ========== unassign employee ==========
+function unassignEmployee(empId) {
+    const emp = employes.find(e => e.id === empId);
+    if (!emp) return;
+    emp.zone = null;
+    emp.assigned = false;
+    affichageemployees();
+    renderAllZones();
+}
