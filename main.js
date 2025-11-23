@@ -572,3 +572,8 @@ function showdetails(empId) {
     const removeBtn = detailModal.querySelector("#remove-from-zone");
     if (removeBtn) removeBtn.addEventListener("click", () => { unassignEmployee(emp.id); if (detailModal) { detailModal.remove(); detailModal = null; } });
 }
+
+
+// ========== initial renders ==========
+affichageemployees();
+renderAllZones();
