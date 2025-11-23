@@ -444,3 +444,63 @@ function assigntozone(empId) {
     affichageemployees();
     renderAllZones();
 }
+
+
+// ========== render employees inside each room ==========
+function renderAllZones() {
+    for (let zoneKey in room_config) {
+        renderZone(zoneKey);
+    }
+}
+
+function renderZone(zoneKey) {
+    const cfg = room_config[zoneKey];
+    const domEl = roomels[zoneKey] || null;
+    if (!domEl) return;
+
+    domEl.querySelectorAll(".zone-employee").forEach(n => n.remove());
+
+    const occupants = employes.filter(e => e.assigned && e.zone === zoneKey);
+
+    if (occupants.length === 0) {
+        if (!domEl.querySelector(".empty-overlay")) {
+            const overlay = document.createElement("div");
+            overlay.className = "empty-overlay absolute inset-0 bg-red-100/50 pointer-events-none rounded-md";
+            domEl.classList.add("relative"); 
+            domEl.appendChild(overlay);
+        }
+    } else {
+        const overlay = domEl.querySelector(".empty-overlay");
+        if (overlay) overlay.remove();
+    }
+
+
+
+    occupants.forEach(emp => {
+        const node = document.createElement("div");
+        node.className = "zone-employee flex items-center gap-2 p-1 rounded-md mt-2 bg-white shadow-sm w-full justify-between";
+        node.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <img src="${emp.photourl}" class="w-10 h-10 rounded-full object-cover border" alt="${emp.name}">
+                    <div>
+                    <div class="text-sm font-semibold">${emp.name}</div>
+                    <div class="text-xs text-gray-500">${emp.role}</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="btn-zone-detail text-blue-600" data-id="${emp.id}"><i class="fa-solid fa-eye"></i></button>
+                    <button class="btn-unassign text-red-500" data-id="${emp.id}"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            `;
+        domEl.appendChild(node);
+
+        node.querySelector(".btn-unassign").addEventListener("click", function () {
+            unassignEmployee(emp.id);
+        });
+
+        node.querySelector(".btn-zone-detail").addEventListener("click", function () {
+            showdetails(emp.id);
+        });
+    });
+}
+
