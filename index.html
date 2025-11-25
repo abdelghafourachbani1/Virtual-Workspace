@@ -5,271 +5,165 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WorkSphere - Gestion Personnel</title>
-
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-gray-100">
 
-    <main class="grid gap-1 grid-cols-[1fr_5fr] pl-1 pr-1 mt-0.5 min-h-screen">
+    <main class="grid gap-1 grid-cols-1 lg:grid-cols-[1fr_5fr] p-1 lg:pl-1 lg:pr-1 mt-0.5 min-h-screen">
 
-        <aside class="w-full h-screen rounded-lg border-amber-100 bg-gray-200 text-center p-1 overflow-y-auto">
-            <button id="openformbtn" class=" bg-green-700 text-white font-bold p-1 rounded-lg mb-3">+Ajoute un
-                employe</button>
+        <aside
+            class="w-full h-auto lg:h-screen rounded-lg border-amber-100 bg-gray-200 text-center p-2 lg:p-1 overflow-y-auto">
+            <button id="openformbtn"class="w-full lg:w-auto bg-green-700 text-white font-bold p-2 lg:p-1 rounded-lg mb-3 text-sm lg:text-base">
+                +Ajouter un employé
+            </button>
             <div id="cards-holder"></div>
         </aside>
 
-        <section id="plan-section"
-            class="grid grid-cols-[1fr_1fr_1fr_1fr_1fr] grid-rows-[1fr_1fr_1fr] bg-center bg-[url('https://simplonline-v3-prod.s3.eu-west-3.amazonaws.com/media/image/jpg/plan-69159a65c5684763515973.jpg')] rounded-b-md p-2 gap-2">
+        <section class="relative w-full rounded-xl overflow-hidden shadow-2xl min-h-[600px] lg:min-h-screen">
+            <img src="https://simplonline-v3-prod.s3.eu-west-3.amazonaws.com/media/image/jpg/plan-69159a65c5684763515973.jpg"alt="worksphere" class="w-full h-full absolute object-cover opacity-90" />
 
-            <div class="room border_8 border-black col-start-1 col-end-3 w-full p-2 flex items-start flex-col justify-start"
-                id="room1">
-                <h2 class="font-bold text-center ">Salle De Conference</h2>
-                <button id="conferencebtn" class="mt-3 px-4 py-2 bg-blue-600 text-black rounded-lg hover:bg-blue-700"><i
-                        class="fa-solid fa-plus"></i></button>
+            <div class="absolute backdrop-blur-[1px] inset-0"></div>
+
+            <div id="plan-section"
+                class="absolute inset-0 grid grid-cols-[38.2%_16%_23%_22.6%] grid-rows-[34%_32.8%_33.1%]">
+
+                <div id="room1" class="room room-area border border-gray-300/60 bg-white/20">
+                    <span class="room-label">Salle De Conférence</span>
+                    <button id="conferencebtn" class="add-button absolute top-3 right-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+
+                <div class="row-span-3 border-l border-gray-300/40"></div>
+
+                <div id="room2" class="room room-area border border-gray-300/60 bg-white/20">
+                    <span class="room-label">Salle Des Serveurs</span>
+                    <button id="serveursbtn" class="add-button absolute top-3 right-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+
+                <div id="room3" class="room room-area border-b border-gray-300/60 bg-white/20">
+                    <span class="room-label">Salle D'Archives</span>
+                    <button id="archivebtn" class="add-button absolute top-3 right-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+
+                <div id="room4" class="room room-area row-span-2 border-2 border-gray-400/60 bg-white/30">
+                    <span class="room-label text-base">Réception</span>
+                    <button id="receptionbtn" class="add-button absolute top-3 right-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+
+                <div class="col-span-2 border border-gray-300/40"></div>
+
+                <div id="room5" class="room room-area border-2 border-gray-400/60 bg-white/30">
+                    <span class="room-label">Salle Du Personnel</span>
+                    <button id="personnelbtn" class="add-button absolute top-3 right-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+
+                <div id="room6" class="room room-area border-t-2 border-gray-400/60 bg-gray-800/20">
+                    <span class="room-label text-gray-700">Salle De Sécurité</span>
+                    <button id="securitebtn" class="add-button absolute top-3 right-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+
             </div>
-
-            <div class="room border-8 border-black col-start-4 col-end-5 w-full p-2 flex items-start flex-col justify-start"
-                id="room2">
-                <h2 class="font-bold text-center">Salle Des Serveurs</h2>
-                <button id="serveursbtn" class="mt-3 px-4 py-2 bg-blue-600 text-black rounded-lg hover:bg-blue-700"><i
-                        class="fa-solid fa-plus"></i></button>
-            </div>
-
-            <div class="room border_8 border-black col-start-5 col-end-6 w-full p-2 flex items-start flex-col justify-start"
-                id="room3">
-                <h2 class="font-bold text-center">Salle D'archives</h2>
-                <button id="archivebtn" class="mt-3 px-4 py-2 bg-blue-600 text-black rounded-lg hover:bg-blue-700"><i
-                        class="fa-solid fa-plus"></i></button>
-            </div>
-
-            <div class="room border_8 border-black col-start-1 col-end-3 row-start-2 row-end-4 w-full p-2 flex items-start flex-col justify-start"
-                id="room4">
-                <h2 class="font-bold text-center">Reception</h2>
-                <button id="receptionbtn" class="mt-3 px-4 py-2 bg-blue-600 text-black rounded-lg hover:bg-blue-700"><i
-                        class="fa-solid fa-plus"></i></button>
-            </div>
-
-            <div class="room border_8 border-black col-start-4 col-end-5 row-start-3 p-2 flex items-start flex-col justify-start"
-                id="room5">
-                <h2 class="font-bold text-center ">Salle Du Personnel</h2>
-                <button id="personnelbtn" class="mt-3 px-4 py-2 bg-blue-600 text-black rounded-lg hover:bg-blue-700"><i
-                        class="fa-solid fa-plus"></i></button>
-            </div>
-
-            <div class="room border_8 border-black col-start-5 col-end-6 row-start-3 w-full p-2 flex items-start flex-col justify-start"
-                id="room6">
-                <h2 class="font-bold text-center">Salle De Securite</h2>
-                <button id="securitebtn" class="mt-3 px-4 py-2 bg-blue-600 text-black rounded-lg hover:bg-blue-700"><i
-                        class="fa-solid fa-plus"></i></button>
-            </div>
-
         </section>
     </main>
 
     <div id="form-holder"
-        class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-start overflow-y-auto p-4 z-40">
-        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto">
-            <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-8 py-8 rounded-t-2xl">
-                <h2 class="text-3xl font-bold text-white text-center">Ajouter une Employe</h2>
-                <p class="text-emerald-100 text-center mt-2 text-sm">Remplissez les informations ci-dessous</p>
-            </div>
-    
-            <div class="p-8">
-                <div class="mb-8">
-                    <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                        <span class="w-1 h-6 bg-emerald-600 rounded-full"></span>
-                        Informations Personnelles
-                    </h3>
-    
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-2">Nom Complet</label>
-                            <input id="full-name" type="text" placeholder="Jean Dupont"
-                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition" />
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-2">Email</label>
-                            <input id="email" type="email" placeholder="jean@example.com"
-                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition" />
-                        </div>
-                    </div>
-    
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-2">Numéro de Téléphone</label>
-                            <input id="phonenumber" type="text" placeholder="+33 6 12 34 56 78"
-                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition" />
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-2">Rôle</label>
-                            <select id="rolesurentreprise"
-                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition bg-white">
-                                <option value="">Sélectionner un rôle</option>
-                                <option value="receptionniste">Réceptionniste</option>
-                                <option value="technicien IT">Technicien IT</option>
-                                <option value="agent de securite">Agent de Sécurité</option>
-                                <option value="manager">Manager</option>
-                                <option value="nettoyage">Nettoyage</option>
-                                <option value="autre">Autre</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="mb-8">
-                    <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                        <span class="w-1 h-6 bg-emerald-600 rounded-full"></span>
-                        Photo de Profil
-                    </h3>
-    
-                    <div class="flex gap-6 items-end">
-                        <div class="flex-1">
-                            <label class="block text-sm font-medium text-slate-700 mb-2">URL de l'Image</label>
-                            <input id="photourlinput" type="text" placeholder="https://exemple.com/photo.jpg"
-                                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition" />
-                        </div>
-                        <div class="text-center">
-                            <img id="photopreview" src="/placeholder.svg" alt="Aperçu de la photo"
-                                class="w-24 h-24 object-cover rounded-full border-2 border-emerald-200 shadow-md" />
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-8">
-                    <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                        <span class="w-1 h-6 bg-emerald-600 rounded-full"></span>
-                        Expérience Professionnelle
-                    </h3>
-    
-                    <div id="experiencepart" class="space-y-3 mb-4">
-                        <div
-                            class="experienceinputs grid grid-cols-2 gap-3 p-4 bg-slate-50 rounded-lg border border-slate-200">
-                            <div>
-                                <label class="block text-xs font-medium text-slate-600 mb-1.5">Nom de l'Entreprise</label>
-                                <input type="text"
-                                    class="entreprisename w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition"
-                                    placeholder="Nom de l'entreprise" />
-                            </div>
-                            <div>
-                                <label class="block text-xs font-medium text-slate-600 mb-1.5">Rôle</label>
-                                <select
-                                    class="exprole w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition bg-white">
-                                    <option value="">Sélectionner un rôle</option>
-                                    <option value="receptionniste">Réceptionniste</option>
-                                    <option value="technicien IT">Technicien IT</option>
-                                    <option value="agent de securite">Agent de Sécurité</option>
-                                    <option value="manager">Manager</option>
-                                    <option value="nettoyage">Nettoyage</option>
-                                    <option value="autre">Autre</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-medium text-slate-600 mb-1.5">Date de Début</label>
-                                <input type="date"
-                                    class="datefrom w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition" />
-                            </div>
-                            <div>
-                                <label class="block text-xs font-medium text-slate-600 mb-1.5">Date de Fin</label>
-                                <input type="date"
-                                    class="dateto w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition" />
-                            </div>
-                        </div>
-                    </div>
-    
-                    <button id="addexperiencebtn" type="button"
-                        class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium rounded-lg transition flex items-center gap-2">
-                        <span class="text-lg">+</span>
-                        Ajouter une Expérience
-                    </button>
-                </div>
-    
-                <!-- Action Buttons -->
-                <div class="flex gap-3 pt-6 border-t border-slate-200">
-                    <button id="submitbtn"
-                        class="flex-1 px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition shadow-md hover:shadow-lg">
-                        Soumettre
-                    </button>
-                    <button id="closeformbtn"
-                        class="flex-1 px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-lg transition">
-                        Annuler
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+        class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-start overflow-y-auto p-2 sm:p-4 z-40">
+        <div
+            class="bg-white w-full max-w-3xl p-4 sm:p-6 rounded-xl shadow-xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto my-2 sm:my-4">
+            <h2 class="text-xl sm:text-2xl text-center font-bold mb-4">Ajouter un employé</h2>
 
-    <!-- <div id="form-holder"
-        class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-start overflow-y-auto p-4 z-40">
-        <div class="bg-white w-full max-w-3xl p-6 rounded-xl shadow-xl max-h-[90vh] overflow-y-auto">
-            <h2 class="text-2xl text-center font-bold mb-4">ajoute un employe</h2>
-
-            <div class="grid grid-cols-2 gap-4 mb-4">
-                <input id="full-name" type="text" placeholder="full name" class="border p-2 rounded-lg w-full" />
-                <input id="email" type="email" placeholder="email" class="border p-2 rounded-lg w-full" />
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <input id="full-name" type="text" placeholder="Nom complet"
+                    class="border p-2 rounded-lg w-full text-sm sm:text-base" />
+                <input id="email" type="email" placeholder="Email"
+                    class="border p-2 rounded-lg w-full text-sm sm:text-base" />
             </div>
 
-            <div class="grid grid-cols-2 gap-4 mb-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 items-center">
                 <input id="photourlinput" type="text" placeholder="URL de l'image"
-                    class="border p-2 rounded-lg w-full" />
-                <img id="photopreview" src="" alt="image preview"
-                    class="w-24 h-24 object-cover rounded-full border-dotted border-2" />
+                    class="border p-2 rounded-lg w-full text-sm sm:text-base" />
+                <div class="flex justify-center sm:justify-start">
+                    <img id="photopreview" src="" alt="image preview"
+                        class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-full border-dotted border-2" />
+                </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-4 mb-4">
-                <select id="rolesurentreprise" class="border p-2 rounded-lg w-full">
-                    <option value="">selectionner un role</option>
-                    <option value="receptionniste">receptionniste</option>
-                    <option value="technicien IT">technicien IT</option>
-                    <option value="agent de securite">agent de securite</option>
-                    <option value="manager">manager</option>
-                    <option value="nettoyage">nettoyage</option>
-                    <option value="autre">autre</option>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <select id="rolesurentreprise" class="border p-2 rounded-lg w-full text-sm sm:text-base">
+                    <option value="">Sélectionner un rôle</option>
+                    <option value="receptionniste">Réceptionniste</option>
+                    <option value="technicien IT">Technicien IT</option>
+                    <option value="agent de securite">Agent de sécurité</option>
+                    <option value="manager">Manager</option>
+                    <option value="nettoyage">Nettoyage</option>
+                    <option value="autre">Autre</option>
                 </select>
 
-                <input id="phonenumber" type="text" placeholder="numero de telephone" class=" border p-2 rounded-lg" />
+                <input id="phonenumber" type="text" placeholder="Numéro de téléphone"
+                    class="border p-2 rounded-lg text-sm sm:text-base" />
             </div>
 
-            <h3 class="text-lg font-bold mt-4 text-center">experiences profetionnel</h3>
+            <h3 class="text-base sm:text-lg font-bold mt-4 text-center">Expériences professionnelles</h3>
             <div id="experiencepart" class="space-y-4 mt-2">
-                <div class="experienceinputs grid grid-cols-2 gap-4 border p-4 rounded-lg">
-                    <input type="text" class="entreprisename border p-2 rounded-lg w-full"
+                <div class="experienceinputs grid grid-cols-1 sm:grid-cols-2 gap-4 border p-3 sm:p-4 rounded-lg">
+                    <input type="text" class="entreprisename border p-2 rounded-lg w-full text-sm sm:text-base"
                         placeholder="Nom de l'entreprise" />
-                    <select class="exprole border p-2 rounded-lg w-full">
-                        <option value="">selectionner un role</option>
-                        <option value="receptionniste">receptionniste</option>
-                        <option value="technicien IT">technicien IT</option>
-                        <option value="agent de securite">agent de securite</option>
-                        <option value="manager">manager</option>
-                        <option value="nettoyage">nettoyage</option>
-                        <option value="autre">autre</option>
+                    <select class="exprole border p-2 rounded-lg w-full text-sm sm:text-base">
+                        <option value="">Sélectionner un rôle</option>
+                        <option value="receptionniste">Réceptionniste</option>
+                        <option value="technicien IT">Technicien IT</option>
+                        <option value="agent de securite">Agent de sécurité</option>
+                        <option value="manager">Manager</option>
+                        <option value="nettoyage">Nettoyage</option>
+                        <option value="autre">Autre</option>
                     </select>
 
-                    <input type="date" class="datefrom border p-2 rounded-lg w-full" />
-                    <input type="date" class="dateto border p-2 rounded-lg w-full" />
+                    <input type="date" class="datefrom border p-2 rounded-lg w-full text-sm sm:text-base" />
+                    <input type="date" class="dateto border p-2 rounded-lg w-full text-sm sm:text-base" />
                 </div>
             </div>
 
             <button id="addexperiencebtn" type="button"
-                class="mt-3 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">+ Ajouter une
-                experience</button>
+                class="mt-3 px-3 sm:px-4 py-2 bg-blue-600 text-white text-sm sm:text-base rounded-lg hover:bg-blue-700">
+                + Ajouter une expérience
+            </button>
 
-            <div class="flex gap-4 mt-6">
+            <div class="flex flex-col sm:flex-row gap-4 mt-6">
                 <button id="submitbtn"
-                    class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 w-full">Submit</button>
+                    class="px-4 py-2 bg-green-600 text-white text-sm sm:text-base rounded-lg hover:bg-green-700 w-full">
+                    Soumettre
+                </button>
                 <button id="closeformbtn"
-                    class="px-4 py-2 bg-gray-400 text-black rounded-lg hover:bg-gray-500 w-full">Annuler</button>
+                    class="px-4 py-2 bg-gray-400 text-black text-sm sm:text-base rounded-lg hover:bg-gray-500 w-full">
+                    Annuler
+                </button>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <div id="zone-modal"
-        class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center p-4 z-40">
+        class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center p-2 sm:p-4 z-40">
         <div class="bg-white w-full max-w-xl p-4 rounded-xl shadow-xl max-h-[80vh] overflow-y-auto">
-            <h2 id="zone-title" class="text-xl font-bold text-center mb-4"></h2>
+            <h2 id="zone-title" class="text-lg sm:text-xl font-bold text-center mb-4"></h2>
             <div id="zone-employees-list" class="space-y-2"></div>
             <button id="close-zone-modal"
-                class="mt-4 px-4 py-2 bg-gray-400 text-black rounded-lg hover:bg-gray-500 w-full">Annuler</button>
+                class="mt-4 px-4 py-2 bg-gray-400 text-black text-sm sm:text-base rounded-lg hover:bg-gray-500 w-full">
+                Annuler
+            </button>
         </div>
     </div>
 

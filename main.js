@@ -1,7 +1,7 @@
 /////////// the main array that contain the emplye infoo //////////////
 let employes = [
     {
-        id: Date.now() ,
+        id: Date.now() +1,
         name: "vito",
         email: "achbaniabdelghafour8@gmail.com",
         numerotelephone: "0612345678",
@@ -10,12 +10,112 @@ let employes = [
         photourl: "https://i.pravatar.cc/150?img=12",
         exprecinces: [],
         zone: null,
-    }
+    },
+    {
+        id: Date.now() + 2,
+        name: "ali",
+        email: "achbaniabdelghafour8@gmail.com",
+        numerotelephone: "0612345678",
+        assigned: false,
+        role: "manager",
+        photourl: "https://i.pravatar.cc/150?img=12",
+        exprecinces: [],
+        zone: null,
+    },
+    {
+        id: Date.now() + 3,
+        name: "reda",
+        email: "achbaniabdelghafour8@gmail.com",
+        numerotelephone: "0612345678",
+        assigned: false,
+        role: "technicien IT",
+        photourl: "https://i.pravatar.cc/150?img=12",
+        exprecinces: [],
+        zone: null,
+    },
+    {
+        id: Date.now() + 4,
+        name: "khaled",
+        email: "achbaniabdelghafour8@gmail.com",
+        numerotelephone: "0612345678",
+        assigned: false,
+        role: "technicien IT",
+        photourl: "https://i.pravatar.cc/150?img=12",
+        exprecinces: [],
+        zone: null,
+    },
+    {
+        id: Date.now() + 5,
+        name: "mouad",
+        email: "achbaniabdelghafour8@gmail.com",
+        numerotelephone: "0612345678",
+        assigned: false,
+        role: "nettoyage",
+        photourl: "https://i.pravatar.cc/150?img=12",
+        exprecinces: [],
+        zone: null,
+    },
+    {
+        id: Date.now() + 6,
+        name: "ayoub",
+        email: "achbaniabdelghafour8@gmail.com",
+        numerotelephone: "0612345678",
+        assigned: false,
+        role: "nettoyage",
+        photourl: "https://i.pravatar.cc/150?img=12",
+        exprecinces: [],
+        zone: null,
+    },
+    {
+        id: Date.now() + 7,
+        name: "ayoub",
+        email: "achbaniabdelghafour8@gmail.com",
+        numerotelephone: "0612345678",
+        assigned: false,
+        role: "receptionniste",
+        photourl: "https://i.pravatar.cc/150?img=12",
+        exprecinces: [],
+        zone: null,
+    },
+    {
+        id: Date.now() + 8,
+        name: "ayoub",
+        email: "achbaniabdelghafour8@gmail.com",
+        numerotelephone: "0612345678",
+        assigned: false,
+        role: "receptionniste",
+        photourl: "https://i.pravatar.cc/150?img=12",
+        exprecinces: [],
+        zone: null,
+    },
+    {
+        id: Date.now() + 9,
+        name: "ayoub",
+        email: "achbaniabdelghafour8@gmail.com",
+        numerotelephone: "0612345678",
+        assigned: false,
+        role: "agent de securite",
+        photourl: "https://i.pravatar.cc/150?img=12",
+        exprecinces: [],
+        zone: null,
+    },
+    {
+        id: Date.now() + 10,
+        name: "ayoub",
+        email: "achbaniabdelghafour8@gmail.com",
+        numerotelephone: "0612345678",
+        assigned: false,
+        role: "agent de securite",
+        photourl: "https://i.pravatar.cc/150?img=12",
+        exprecinces: [],
+        zone: null,
+    },
 ];
 let curreentzone = null;
 affichageemployees();
 
 ////////////// call using dom ////////
+
 let openform = document.getElementById("openformbtn");
 let formholder = document.getElementById("form-holder");
 let closeformbtn = document.getElementById("closeformbtn");
@@ -29,84 +129,10 @@ let experienceinputs = document.querySelector(".experienceinputs");
 
 let submitbtn = document.getElementById("submitbtn");
 
-let zonemodal = document.getElementById("zone-modal");
-let zonetitle = document.getElementById("zone-title");
-let zoneemployeeslist = document.getElementById("zone-employees-list");
-let clozezonemodal = document.getElementById("close-zone-modal");
-
-////////////////// room buttons ////////////////////////
-
-
-let conferencebtn = document.getElementById("conferencebtn");
-let serveursbtn = document.getElementById("serveursbtn");
-let archivebtn = document.getElementById("archivebtn");
-let receptionbtn = document.getElementById("receptionbtn");
-let personnelbtn = document.getElementById("personnelbtn");
-let securitebtn = document.getElementById("securitebtn");
-
-// room elements (for rendering employees)
-
-
-const roomels = {
-    conferencebtn: document.getElementById("room1"),
-    serveursbtn: document.getElementById("room2"),
-    archivebtn: document.getElementById("room3"),
-    receptionbtn: document.getElementById("room4"),
-    personnelbtn: document.getElementById("room5"),
-    serveurbtn: document.getElementById("room6"), 
-    securitebtn: document.getElementById("room6"),
-};
-
-////////////////// config_room: les metier el la capacite de chaque salle ///////////////
-
-const room_config = {
-    conferencebtn: { 
-        title: "Salle de Conférence",
-        capacity: 5,
-        mandatory: false, 
-        allowed: ["manager", "nettoyage", "autre"] 
-    },
-    serveursbtn: { 
-        title: "Salle des Serveurs", 
-        capacity: 2, 
-        mandatory: true, 
-        allowed: ["technicien IT", "manager"] 
-    },
-    serveurbtn: { 
-        title: "Salle des Serveurs", 
-        capacity: 2, 
-        mandatory: true, 
-        allowed: ["technicien IT", "manager"] 
-    }, 
-    archivebtn: { 
-        title: "Salle d'Archives", 
-        capacity: 2, 
-        mandatory: true, 
-        allowed: ["manager"] 
-    },
-    receptionbtn: { 
-        title: "Reception", 
-        capacity: 3, 
-        mandatory: true, 
-        allowed: ["receptionniste", "manager", "nettoyage"] 
-    },
-    personnelbtn: { 
-        title: "Salle du Personnel", 
-        capacity: 8, 
-        mandatory: false, 
-        allowed: null 
-    }, 
-    securitebtn: { 
-        title: "Salle de Securite", 
-        capacity: 3, 
-        mandatory: true, 
-        allowed: ["agent de securite", "manager", "nettoyage"] 
-    },
-};
 
 // ========== validation regex ==========
 function validateName(name) {
-    return /^[A-Za-z]{6,}$/.test(name);
+    return /^[A-Za-z]{4,}$/.test(name);
 }
 function validateEmail(email) {
     return /^[a-zA-Z0-9._-]+@gmail\.com$/.test(email);
@@ -171,7 +197,7 @@ submitbtn.addEventListener("click", function (e) {
     ////////////////// regex validation usign function //////////////
 
     if (!validateName(fullname)) {
-        alert("Nom non valide (min 6 lettres).");
+        alert("Nom non valide (min 4 lettres).");
         return;
     }
     if (!validateEmail(emailinput)) {
@@ -187,8 +213,7 @@ submitbtn.addEventListener("click", function (e) {
         return;
     }
 
-    // experiences parsing + validation of dates
-      let experienceobject = [];
+    let experienceobject = [];
     let experiences = document.querySelectorAll(".experienceinputs");
 
     experiences.forEach(function (exp) {
@@ -213,6 +238,7 @@ submitbtn.addEventListener("click", function (e) {
     }
 
     let employe = {
+        id : Date.now(),
         name: fullname,
         email: emailinput,
         numerotelephone: telephoneinput,
@@ -226,7 +252,6 @@ submitbtn.addEventListener("click", function (e) {
     employes.push(employe);
     alert("L'employe a ete ajoute avec succe.");
 
-    // reset form (clear inputs)
     document.querySelector("#full-name").value = "";
     document.querySelector("#email").value = "";
     document.getElementById("photourlinput").value = "";
@@ -243,6 +268,7 @@ submitbtn.addEventListener("click", function (e) {
     renderAllZones();
 });
 
+
 // ========== affichage employees in aside (Unassigned only) ==========
 function affichageemployees() {
     let cardsholder = document.getElementById("cards-holder");
@@ -250,12 +276,10 @@ function affichageemployees() {
     let index = 0;
 
     for (let employe of employes) {
-        if (employe.assigned) continue; // show only unassigned in the aside
+        if (employe.assigned) continue; 
 
-        // build card element (to allow listeners)
         let card = document.createElement("div");
         card.className = "employe-card flex justify-between items-center p-1 rounded-xl border bg-white shadow-sm mb-2 cursor-pointer";
-
         card.innerHTML = `
         <div class="flex items-center gap-3">
             <img class="w-16 h-16 rounded-full border border-gray-300 object-cover" src="${employe.photourl}" alt="employe image">
@@ -265,27 +289,18 @@ function affichageemployees() {
             </div>
         </div>
         <div class="flex items-center gap-2">
-            <button class="btn-view text-blue-600" data-id="${employe.id}"><i class="fa-solid fa-eye"></i></button>
             <button class="btn-delete text-red-500" data-index="${index}"><i class="fa-solid fa-trash text-xl"></i></button>
         </div>
         `;
 
-        // click on card shows details (except when clicking buttons)
         card.addEventListener("click", function (ev) {
-            if (ev.target.closest(".btn-delete") || ev.target.closest(".btn-view"))  return;
+            if (ev.target.closest(".btn-delete"))  return;
             showdetails(employe.id);
         });
 
-        // delete button
         card.querySelector(".btn-delete").addEventListener("click", function (ev) {
             ev.stopPropagation();
-            deletemploye(Number(this.dataset.index));
-        });
-
-        // view detail button
-        card.querySelector(".btn-view").addEventListener("click", function (ev) {
-            ev.stopPropagation();
-            showdetails(Number(this.dataset.id));
+            deletemploye(this.dataset.index);
         });
 
         cardsholder.appendChild(card);
@@ -296,67 +311,24 @@ function affichageemployees() {
 ////////////////// delete employee ///////////////
 
 function deletemploye(index) {
-    if (index < 0 || index >= employes.length) return;
     if (!confirm("supprimer cette employe ?")) return;
     employes.splice(index, 1);
     affichageemployees();
     renderAllZones();
 }
 
-/////////////////// zone modal list //////////////////
 
-clozezonemodal.addEventListener("click", function () {
-    zonemodal.classList.add("hidden");
-});
+////////////////// room buttons ////////////////////////
 
-function zoneemplyemodal(title, arrayemployees) {
-    console.log("current zone:", curreentzone);
-
-    if (!curreentzone) {
-        alert("zone non definie !");
-        return;
-    }
-
-    zonetitle.textContent = title;
-    zoneemployeeslist.innerHTML = "";
-
-    if (arrayemployees.length === 0) {
-        zoneemployeeslist.innerHTML = `<p class="text-sm text-gray-500">Aucun employé éligible disponible.</p>`;
-    }
-
-    arrayemployees.forEach(emp => {
-        // create node instead of innerHTML += to attach listeners
-        let el = document.createElement("div");
-        el.id = `zone-emp-${emp.id}`;
-        el.className = "flex justify-between items-center p-2 rounded-xl border bg-white shadow-sm mb-1 cursor-pointer";
-        el.innerHTML = `
-        <div class="flex items-center gap-3">
-            <img class="w-14 h-14 rounded-full border border-gray-300 object-cover" src="${emp.photourl}" alt="employe image">
-            <div class="flex flex-col">
-            <h3 class="text-lg font-bold">${emp.name}</h3>
-            <strong class="text-sm text-gray-600">${emp.role}</strong>
-            </div>
-        </div>
-        <button class="px-3 py-1 bg-green-600 text-white rounded-md assign-btn" data-id="${emp.id}">Affecter</button>
-        `;
-        zoneemployeeslist.appendChild(el);
-
-        // click to assign
-        el.querySelector(".assign-btn").addEventListener("click", function (ev) {
-            ev.stopPropagation();
-            assigntozone(emp.id);
-        });
-
-        // click to show details
-        el.addEventListener("click", function () {
-            showdetails(emp.id);
-        });
-    });
-
-    zonemodal.classList.remove("hidden");
-}
+let conferencebtn = document.getElementById("conferencebtn");
+let serveursbtn = document.getElementById("serveursbtn");
+let archivebtn = document.getElementById("archivebtn");
+let receptionbtn = document.getElementById("receptionbtn"); 
+let personnelbtn = document.getElementById("personnelbtn");
+let securitebtn = document.getElementById("securitebtn");
 
 ////////////////// zone buttons listeners  ////////////////
+
 conferencebtn.addEventListener("click", function () {
     curreentzone = "conferencebtn";
     let conferanceemp = ["manager", "nettoyage", "autre"];
@@ -398,42 +370,121 @@ serveursbtn.addEventListener("click", function () {
     zoneemplyemodal("Salle des Serveurs", serverarray);
 });
 
+/////////////////// zone modal list //////////////////
 
+let zonemodal = document.getElementById("zone-modal");
+let zonetitle = document.getElementById("zone-title");
+let zoneemployeeslist = document.getElementById("zone-employees-list");
+let clozezonemodal = document.getElementById("close-zone-modal");
+
+clozezonemodal.addEventListener("click", function () {
+    zonemodal.classList.add("hidden");
+});
+
+function zoneemplyemodal(title, arrayemployees) {
+
+    zonetitle.textContent = title;
+    zoneemployeeslist.innerHTML = "";
+
+    if (arrayemployees.length === 0) {
+        zoneemployeeslist.innerHTML = `<p class="text-sm text-gray-500">aucune employe disponible</p>`;
+    }
+
+    arrayemployees.forEach(emp => {
+        let el = document.createElement("div");
+        el.className = "flex justify-between items-center p-2 rounded-xl border bg-white shadow-sm mb-1 cursor-pointer";
+        el.innerHTML = `
+            <div class="flex items-center gap-3">
+                <img class="w-14 h-14 rounded-full border border-gray-300 object-cover" src="${emp.photourl}" alt="employe image">
+                <div class="flex flex-col">
+                <h3 class="text-lg font-bold">${emp.name}</h3>
+                <strong class="text-sm text-gray-600">${emp.role}</strong>
+                </div>
+            </div>
+            <button class="px-3 py-1 bg-green-600 text-white rounded-md assign-btn" data-id="${emp.id}">Affecter</button>
+            `;
+        zoneemployeeslist.appendChild(el);
+
+        el.querySelector(".assign-btn").addEventListener("click", function (ev) {
+            ev.stopPropagation();
+            assigntozone(emp.id);
+        });
+
+        el.addEventListener("click", function () {
+            showdetails(emp.id);
+        });
+    });
+
+    zonemodal.classList.remove("hidden");
+}
+
+////////////////// config_room: les metier el la capacite de chaque salle ///////////////
+
+let room_config = {
+    conferencebtn: { 
+        title: "Salle de Conférence",
+        capacity: 5, 
+        allowed: ["manager", "nettoyage", "autre"] 
+    },
+    serveursbtn: { 
+        title: "Salle des Serveurs", 
+        capacity: 2, 
+        allowed: ["technicien IT", "manager"] 
+    },
+    serveurbtn: { 
+        title: "Salle des Serveurs", 
+        capacity: 2, 
+        allowed: ["technicien IT", "manager"] 
+    }, 
+    archivebtn: { 
+        title: "Salle d'Archives", 
+        capacity: 2,  
+        allowed: ["manager"] 
+    },
+    receptionbtn: { 
+        title: "Reception", 
+        capacity: 3,  
+        allowed: ["receptionniste", "manager", "nettoyage"] 
+    },
+    personnelbtn: { 
+        title: "Salle du Personnel", 
+        capacity: 8,  
+        allowed: null 
+    }, 
+    securitebtn: { 
+        title: "Salle de Securite", 
+        capacity: 3, 
+        allowed: ["agent de securite", "manager", "nettoyage"] 
+    },
+};
 
 ////////////////////// assign to zone (with role check + capacity check) ////////////////
+
 function assigntozone(empId) {
     let employe = employes.find(e => e.id === empId);
     if (!employe) return;
 
-    if (!curreentzone) {
-        alert("Zone non sélectionnée !");
-        return;
-    }
-
-    // role check using room_config
-    const cfg = room_config[curreentzone];
+    let cfg = room-config[curreentzone];
     if (!cfg) {
-        alert("Configuration de la zone introuvable.");
+        alert("configuration de cette zone non trouver");
         return;
     }
 
-    // role allowed?
-    const roleAllowed = (function () {
-        if (employe.role === "manager") return true;
-        if (employe.role === "nettoyage" && curreentzone === "archivebtn") return false;
-        if (!cfg.allowed) return true;
+    // test allowd
+    let roleAllowed = (function () {
+        if (!cfg.allowed) return true; // the personnel romm//
         return cfg.allowed.includes(employe.role);
     })();
 
     if (!roleAllowed) {
-        alert(`Le rôle "${employe.role}" n'est pas autorisé ici`);
+        alert(`Le metier "${employe.role}" n'est pas autorise dans cett salle `);
         return;
     }
 
-    // capacity check
-    const occupantsCount = employes.filter(e => e.assigned && e.zone === curreentzone).length;
-    if (occupantsCount >= cfg.capacity) {
-        alert(`Capacité atteinte pour ${cfg.title} (${cfg.capacity})`);
+    // test de capacite
+    let currentcount = employes.filter(e => e.assigned && e.zone === curreentzone).length;
+    if (currentcount >= cfg.capacity) {
+        alert(`le maximum capacite attaint pour ${cfg.title} est (${cfg.capacity})`);
         return;
     }
 
@@ -444,42 +495,51 @@ function assigntozone(empId) {
     affichageemployees();
     renderAllZones();
 }
+// room elements (for rendering employees)
+
+let roomels = {
+    conferencebtn : document.getElementById("room1"),
+    serveursbtn : document.getElementById("room2"),
+    archivebtn: document.getElementById("room3"),
+    receptionbtn: document.getElementById("room4"),
+    personnelbtn: document.getElementById("room5"),
+    serveurbtn: document.getElementById("room6"), 
+};
 
 
-// ========== render employees inside each room ==========
+///////////// render employees inside each room ///////////
 function renderAllZones() {
-    for (let zoneKey in room_config) {
-        renderZone(zoneKey);
+    for (let zonekey in room_config) {
+        renderZone(zonekey);
     }
 }
 
-function renderZone(zoneKey) {
-    const cfg = room_config[zoneKey];
-    const domEl = roomels[zoneKey] || null;
-    if (!domEl) return;
+function renderZone(zonekey) {
+    let cfg = room_config[zonekey];
+    let domelroom = roomels[zonekey];
+    if (!domelroom) return;
 
-    domEl.querySelectorAll(".zone-employee").forEach(n => n.remove());
+    domelroom.querySelectorAll(".zone-employee").forEach(n => n.remove());
 
-    const occupants = employes.filter(e => e.assigned && e.zone === zoneKey);
+    let occupant = employes.filter(emp => emp.assigned && e.zone === zonekey);
 
-    if (occupants.length === 0) {
-        if (!domEl.querySelector(".empty-overlay")) {
-            const overlay = document.createElement("div");
+    if (occupant.length === 0) {
+        if (!domelroom.querySelector(".empty-overlay")) {
+            let overlay = document.createElement("div");
             overlay.className = "empty-overlay absolute inset-0 bg-red-100/50 pointer-events-none rounded-md";
-            domEl.classList.add("relative"); 
-            domEl.appendChild(overlay);
+            domelroom.classList.add("relative"); 
+            domelroom.appendChild(overlay);
         }
     } else {
-        const overlay = domEl.querySelector(".empty-overlay");
+        let overlay = domelroom.querySelector(".empty-overlay");
         if (overlay) overlay.remove();
     }
 
-
-
-    occupants.forEach(emp => {
-        const node = document.createElement("div");
-        node.className = "zone-employee flex items-center gap-2 p-1 rounded-md mt-2 bg-white shadow-sm w-full justify-between";
-        node.innerHTML = `
+    occupant.forEach(emp => {
+        let nemp = document.createElement("div");
+        nemp.className = "zone-employee flex items-center gap-2 p-1 rounded-md mt-2 bg-white shadow-sm w-full justify-between";
+        nemp.innerHTML = 
+            `
                 <div class="flex items-center gap-2">
                     <img src="${emp.photourl}" class="w-10 h-10 rounded-full object-cover border" alt="${emp.name}">
                     <div>
@@ -492,19 +552,20 @@ function renderZone(zoneKey) {
                     <button class="btn-unassign text-red-500" data-id="${emp.id}"><i class="fa-solid fa-xmark"></i></button>
                 </div>
             `;
-        domEl.appendChild(node);
+        domelroom.appendChild(node);
 
-        node.querySelector(".btn-unassign").addEventListener("click", function () {
+        nemp.querySelector(".btn-unassign").addEventListener("click", function () {
             unassignEmployee(emp.id);
         });
 
-        node.querySelector(".btn-zone-detail").addEventListener("click", function () {
+        nemp.querySelector(".btn-zone-detail").addEventListener("click", function () {
             showdetails(emp.id);
         });
     });
 }
 
-// ========== unassign employee ==========
+//////////// unassign employee ////////////
+
 function unassignEmployee(empId) {
     const emp = employes.find(e => e.id === empId);
     if (!emp) return;
@@ -514,12 +575,11 @@ function unassignEmployee(empId) {
     renderAllZones();
 }
 
-
-
-// ========== show details modal (simple) ==========
+/////////// show details modal (simple) /////////
 let detailModal = null;
 function showdetails(empId) {
-    const emp = employes.find(e => e.id === empId);
+
+    let emp = employes.find(e => e.id === empId);
     if (!emp) return;
 
     // remove previous
@@ -537,7 +597,6 @@ function showdetails(empId) {
                     <p class="text-sm text-gray-600">${emp.role}</p>
                     <p class="text-sm">${emp.email}</p>
                     <p class="text-sm">${emp.numerotelephone}</p>
-                    <p class="text-sm text-gray-500">Localisation: ${emp.zone ? room_config[emp.zone].title : "Non assigné"}</p>
                 </div>
                 </div>
                 <div class="flex flex-col gap-2">
@@ -554,12 +613,12 @@ function showdetails(empId) {
         `;
     document.body.appendChild(detailModal);
 
-    const expList = detailModal.querySelector("#exp-list");
+    let expList = detailModal.querySelector("#exp-list");
     if (!emp.exprecinces || emp.exprecinces.length === 0) {
         expList.innerHTML = "<p class='text-sm text-gray-500'>Aucune expérience </p>";
     } else {
         emp.exprecinces.forEach(ex => {
-            const el = document.createElement("div");
+            let el = document.createElement("div");
             el.className = "border p-2 rounded";
             el.innerHTML = `<div class="font-semibold">${ex.entreprisename || "—"}</div>
         <div class="text-sm text-gray-600">${ex.role || "—"}</div>
@@ -569,11 +628,12 @@ function showdetails(empId) {
     }
 
     detailModal.querySelector("#close-detail-modal").addEventListener("click", () => { detailModal.remove(); detailModal = null; });
-    const removeBtn = detailModal.querySelector("#remove-from-zone");
+    let removeBtn = detailModal.querySelector("#remove-from-zone");
     if (removeBtn) removeBtn.addEventListener("click", () => { unassignEmployee(emp.id); if (detailModal) { detailModal.remove(); detailModal = null; } });
+
 }
 
+///////////// initial renders ////////////
 
-// ========== initial renders ==========
 affichageemployees();
 renderAllZones();
