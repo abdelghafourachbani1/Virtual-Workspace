@@ -138,7 +138,7 @@ function validateEmail(email) {
     return /^[a-zA-Z0-9._-]+@gmail\.com$/.test(email);
 }
 function validatePhotoUrl(url) {
-    return /^https?:\/\/.+\.(jpg|png|jpeg)$/i.test(url);
+    return /^https?:\/\/.+/i.test(url);
 }
 function validatePhone(phone) {
     return /^[0-9]{10}$/.test(phone);
@@ -205,7 +205,7 @@ submitbtn.addEventListener("click", function (e) {
         return;
     }
     if (!validatePhotoUrl(photourl)) {
-        alert("URL de l'image non valide (jpg/png/jpeg).");
+        alert("URL de l'image non valide");
         return;
     }
     if (!validatePhone(telephoneinput)) {
@@ -424,27 +424,22 @@ let room_config = {
     conferencebtn: { 
         title: "Salle de Conférence",
         capacity: 5, 
-        allowed: ["manager", "nettoyage", "autre"] 
+        allowed: ["manager", "nettoyage", "autre"], 
     },
     serveursbtn: { 
         title: "Salle des Serveurs", 
         capacity: 2, 
-        allowed: ["technicien IT", "manager"] 
+        allowed: ["technicien IT", "manager"], 
     },
-    serveurbtn: { 
-        title: "Salle des Serveurs", 
-        capacity: 2, 
-        allowed: ["technicien IT", "manager"] 
-    }, 
     archivebtn: { 
         title: "Salle d'Archives", 
         capacity: 2,  
-        allowed: ["manager"] 
+        allowed: ["manager"], 
     },
     receptionbtn: { 
         title: "Reception", 
         capacity: 3,  
-        allowed: ["receptionniste", "manager", "nettoyage"] 
+        allowed: ["receptionniste", "manager", "nettoyage"], 
     },
     personnelbtn: { 
         title: "Salle du Personnel", 
@@ -454,7 +449,7 @@ let room_config = {
     securitebtn: { 
         title: "Salle de Securite", 
         capacity: 3, 
-        allowed: ["agent de securite", "manager", "nettoyage"] 
+        allowed: ["agent de securite", "manager", "nettoyage"], 
     },
 };
 
@@ -464,7 +459,7 @@ function assigntozone(empId) {
     let employe = employes.find(e => e.id === empId);
     if (!employe) return;
 
-    let cfg = room-config[curreentzone];
+    let cfg = room_config[curreentzone];
     if (!cfg) {
         alert("configuration de cette zone non trouver");
         return;
@@ -503,7 +498,7 @@ let roomels = {
     archivebtn: document.getElementById("room3"),
     receptionbtn: document.getElementById("room4"),
     personnelbtn: document.getElementById("room5"),
-    serveurbtn: document.getElementById("room6"), 
+    securitebtn: document.getElementById("room6"), 
 };
 
 
@@ -521,7 +516,7 @@ function renderZone(zonekey) {
 
     domelroom.querySelectorAll(".zone-employee").forEach(n => n.remove());
 
-    let occupant = employes.filter(emp => emp.assigned && e.zone === zonekey);
+    let occupant = employes.filter(emp => emp.assigned && emp.zone === zonekey);
 
     if (occupant.length === 0) {
         if (!domelroom.querySelector(".empty-overlay")) {
@@ -552,7 +547,7 @@ function renderZone(zonekey) {
                     <button class="btn-unassign text-red-500" data-id="${emp.id}"><i class="fa-solid fa-xmark"></i></button>
                 </div>
             `;
-        domelroom.appendChild(node);
+        domelroom.appendChild(nemp);
 
         nemp.querySelector(".btn-unassign").addEventListener("click", function () {
             unassignEmployee(emp.id);
@@ -567,7 +562,7 @@ function renderZone(zonekey) {
 //////////// unassign employee ////////////
 
 function unassignEmployee(empId) {
-    const emp = employes.find(e => e.id === empId);
+    let emp = employes.find(e => e.id === empId);
     if (!emp) return;
     emp.zone = null;
     emp.assigned = false;
