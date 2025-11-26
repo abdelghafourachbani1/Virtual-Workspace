@@ -595,13 +595,13 @@ function showdetails(empId) {
                 </div>
                 </div>
                 <div class="flex flex-col gap-2">
-                <button id="close-detail-modal" class="px-3 py-1 bg-gray-200 rounded">Fermer</button>
-                ${emp.assigned ? `<button id="remove-from-zone" class="px-3 py-1 bg-red-600 text-white rounded">Retirer</button>` : ''}
+                <button id="close-detail-modal" class="px-3 py-1 bg-gray-200 rounded">fermer</button>
+                ${emp.assigned ? `<button id="remove-from-zone" class="px-3 py-1 bg-red-600 text-white rounded">retier</button>` : ''}
                 </div>
             </div>
             <hr class="my-3" />
             <div>
-                <h3 class="font-bold">Expériences</h3>
+                <h3 class="font-bold">experience</h3>
                 <div id="exp-list" class="space-y-2 mt-2"></div>
             </div>
             </div>
@@ -610,14 +610,14 @@ function showdetails(empId) {
 
     let expList = detailModal.querySelector("#exp-list");
     if (!emp.exprecinces || emp.exprecinces.length === 0) {
-        expList.innerHTML = "<p class='text-sm text-gray-500'>Aucune expérience </p>";
+        expList.innerHTML = "<p class='text-sm text-gray-500'>aucune experience </p>";
     } else {
         emp.exprecinces.forEach(ex => {
             let el = document.createElement("div");
             el.className = "border p-2 rounded";
-            el.innerHTML = `<div class="font-semibold">${ex.entreprisename || "—"}</div>
-        <div class="text-sm text-gray-600">${ex.role || "—"}</div>
-        <div class="text-xs text-gray-500">${ex.datefrom || "—"} → ${ex.dateto || "—"}</div>`;
+            el.innerHTML = `<div class="font-semibold">${ex.entreprisename }</div>
+        <div class="text-sm text-gray-600">${ex.role }</div>
+        <div class="text-xs text-gray-500">${ex.datefrom } => ${ex.dateto }</div>`;
             expList.appendChild(el);
         });
     }
